@@ -14,15 +14,26 @@
 #include <cstdlib>
 
 #include <iostream>
+#include <thread>
 
 using namespace std;
+
+void hello()
+{
+    std::cout<<"Hello Concurrent World\n";
+}
 
 /*
  * 
  */
 int main(int argc, char** argv) 
 {
-    std::cout<<"Hello World\n";
+    std::thread t(hello);
+    
+    std::cout<<"Run in main thread concurrent. not sure which is run first\n";
+    
+    t.join(); // wait for the thread
+    
     return 0;
 }
 
